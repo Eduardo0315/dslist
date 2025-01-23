@@ -9,29 +9,32 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity //Permite que a classe e seus atributos faca parte de uma tabela do banco de dados
-@Table(name= "tb_game")//define o nome da tabela
+@Entity // Permite que a classe e seus atributos faca parte de uma tabela do banco de
+		// dados
+@Table(name = "tb_game") // define o nome da tabela
 public class Game {
-	//esse codigo cria uma tabela do banco de dados com os membros da classe
-	@Id //configura o id para ser chave primaria do banco
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//forma que ele vai indicar pro banco gerar o id, no caso identity, onde o valor comeca com 1 e vai somando 1 a cada linha
+	// esse codigo cria uma tabela do banco de dados com os membros da classe
+	@Id // configura o id para ser chave primaria do banco
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // forma que ele vai indicar pro banco gerar o id, no caso
+														// identity, onde o valor comeca com 1 e vai somando 1 a cada
+														// linha
 	private Long id;
 	private String title;
-	@Column(name = "game_year")//muda o nome do year no banco porque year e um nome ja usado em banco de dados
+	@Column(name = "game_year") // muda o nome do year no banco porque year e um nome ja usado em banco de dados
 	private Integer year;
 	private String genre;
 	private String platforms;
 	private Double score;
 	private String imgUrl;
-	
+
 	@Column(columnDefinition = "TEXT")
 	private String shortDescription;
-	
-	@Column(columnDefinition = "TEXT") //permite que o atributo tenha mais de 255 caracteres
+
+	@Column(columnDefinition = "TEXT") // permite que o atributo tenha mais de 255 caracteres
 	private String longDescription;
-	
+
 	public Game() {
-		
+
 	}
 
 	public Game(Long id, String title, Integer year, String genre, String platform, Double score, String imgUrl,
@@ -80,7 +83,6 @@ public class Game {
 		this.genre = genre;
 	}
 
-
 	public Double getScore() {
 		return score;
 	}
@@ -119,7 +121,7 @@ public class Game {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj) { // Metodo para comparar objetos da classe
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -138,5 +140,4 @@ public class Game {
 		this.platforms = platforms;
 	}
 
-	
 }
