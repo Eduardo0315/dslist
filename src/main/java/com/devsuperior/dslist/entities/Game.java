@@ -14,16 +14,20 @@ import jakarta.persistence.Table;
 public class Game {
 	//esse codigo cria uma tabela do banco de dados com os membros da classe
 	@Id //configura o id para ser chave primaria do banco
-	@GeneratedValue(strategy = GenerationType.IDENTITY)//forma que ele vai indicar pro banco gerar o id, no caso identity
+	@GeneratedValue(strategy = GenerationType.IDENTITY)//forma que ele vai indicar pro banco gerar o id, no caso identity, onde o valor comeca com 1 e vai somando 1 a cada linha
 	private Long id;
 	private String title;
 	@Column(name = "game_year")//muda o nome do year no banco porque year e um nome ja usado em banco de dados
 	private Integer year;
 	private String genre;
-	private String platform;
+	private String platforms;
 	private Double score;
 	private String imgUrl;
+	
+	@Column(columnDefinition = "TEXT")
 	private String shortDescription;
+	
+	@Column(columnDefinition = "TEXT") //permite que o atributo tenha mais de 255 caracteres
 	private String longDescription;
 	
 	public Game() {
@@ -37,7 +41,7 @@ public class Game {
 		this.title = title;
 		this.year = year;
 		this.genre = genre;
-		this.platform = platform;
+		this.platforms = platform;
 		this.score = score;
 		this.imgUrl = imgUrl;
 		this.shortDescription = shortDescription;
@@ -76,13 +80,6 @@ public class Game {
 		this.genre = genre;
 	}
 
-	public String getPlatform() {
-		return platform;
-	}
-
-	public void setPlatform(String platform) {
-		this.platform = platform;
-	}
 
 	public Double getScore() {
 		return score;
@@ -131,6 +128,14 @@ public class Game {
 			return false;
 		Game other = (Game) obj;
 		return Objects.equals(id, other.id);
+	}
+
+	public String getPlatforms() {
+		return platforms;
+	}
+
+	public void setPlatforms(String platforms) {
+		this.platforms = platforms;
 	}
 
 	
